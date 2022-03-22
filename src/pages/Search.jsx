@@ -11,7 +11,7 @@ class Search extends Component {
     };
   }
 
-  listenInput = ({target}) => {
+  listenInput = ({ target }) => {
     const minLetters = 2;
     this.setState({
       listenInput: target.value,
