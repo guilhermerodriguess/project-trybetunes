@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Album from './pages/Album';
@@ -9,7 +9,22 @@ import NotFound from './pages/NotFound';
 import ProfileEdit from './pages/ProfileEdit';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      logged: false,
+    };
+  }
+
+  isLogged = (param) => {
+    this.setState({
+      logged: param,
+    });
+  }
+
   render() {
+    const { logged } = this.state;
     return (
       <>
         <p>TrybeTunes</p>
@@ -31,7 +46,7 @@ class App extends React.Component {
               <Search />
             </Route>
             <Route exact path="/">
-              <Login />
+              {logged ? <Redirect to="/search" /> : <Login isLogged={ this.isLogged } />}
             </Route>
             <Route path="*">
               <NotFound />
