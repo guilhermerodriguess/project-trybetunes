@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import ListAlbum from '../components/ListAlbum';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 
 class Search extends Component {
   constructor() {

@@ -30,6 +30,9 @@ class App extends React.Component {
         <p>TrybeTunes</p>
         <BrowserRouter>
           <Switch>
+            <Route exact path="/">
+              {logged ? <Redirect to="/search" /> : <Login isLogged={ this.isLogged } />}
+            </Route>
             <Route path="/profile/edit">
               <ProfileEdit />
             </Route>
@@ -39,15 +42,10 @@ class App extends React.Component {
             <Route path="/favorites">
               <Favorites />
             </Route>
-            <Route path="/album/:id">
-              <Album />
-            </Route>
             <Route path="/search">
               <Search />
             </Route>
-            <Route exact path="/">
-              {logged ? <Redirect to="/search" /> : <Login isLogged={ this.isLogged } />}
-            </Route>
+            <Route path="/album/:id" component={ Album } />
             <Route path="*">
               <NotFound />
             </Route>

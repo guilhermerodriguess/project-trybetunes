@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class ListAlbum extends Component {
-  sendIdAlbum = (id) => {
-    localStorage.setItem('idAlbum', { id });
-  }
-
   render() {
     const { result } = this.props;
     return (
@@ -35,8 +31,7 @@ class ListAlbum extends Component {
                       <br />
                       <Link
                         data-testid={ `link-to-album-${collectionId}` }
-                        to={ `/album/${collectionId}` }
-                        onClick={ this.sendIdAlbum }
+                        to={ `album/${collectionId}` }
                       >
                         More Info
                       </Link>
