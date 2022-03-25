@@ -14,7 +14,6 @@ class MusicCard extends Component {
   }
 
   fetchAPI = async (music) => {
-    const { checked } = this.state;
     this.setState((prevState) => ({
       loading: true,
       checked: !prevState.checked,
