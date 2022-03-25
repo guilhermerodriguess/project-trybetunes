@@ -1,30 +1,65 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { addSong } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 class MusicCard extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      loading: false,
+      checked: false,
+    };
+  }
+
+  fetchAPI = async (music) => {
+    const { checked } = this.state;
+    this.setState((prevState) => ({
+      loading: true,
+      checked: !prevState.checked,
+    }));
+    await addSong(music);
+    this.setState({
+      loading: false,
+    });
+  }
+
   render() {
-    const { songs } = this.props;
+    const {
+      trackId,
+      trackName,
+      previewUrl,
+      music } = this.props;
+    const { loading, checked } = this.state;
     return (
-      <>
-        {
-          songs.map((song, index) => (
-            index === 0
-              ? null
-              : (
-                <li key={ index }>
-                  <p>{song.trackName}</p>
-                  <audio data-testid="audio-component" src={ song.previewUrl } controls>
-                    <track kind="captions" />
-                    O seu navegador não suporta o elemento
-                    {' '}
-                    <code>audio</code>
-                    .
-                  </audio>
-                </li>
-              )
-          ))
-        }
-      </>
+      <div>
+        {loading
+          ? <Loading />
+          : (
+            <>
+              <p>{trackName}</p>
+              <audio data-testid="audio-component" src={ previewUrl } controls>
+                <track kind="captions" />
+                O seu navegador não suporta o elemento
+                {' '}
+                <code>audio</code>
+                .
+              </audio>
+              <label htmlFor="fav">
+                Favorita
+                <input
+                  data-testid={ `checkbox-music-${trackId}` }
+                  type="checkbox"
+                  name={ trackId }
+                  id="fav"
+                  onChange={ () => this.fetchAPI(music) }
+                  checked={ checked }
+                />
+              </label>
+            </>
+          )}
+      </div>
     );
   }
 }
@@ -32,5 +67,9 @@ class MusicCard extends Component {
 export default MusicCard;
 
 MusicCard.propTypes = {
-  songs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  music: PropTypes.arrayOf(PropTypes.object).isRequired,
+  trackId: PropTypes.number.isRequired,
+  trackName: PropTypes.string.isRequired,
+  previewUrl: PropTypes.string.isRequired,
+
 };

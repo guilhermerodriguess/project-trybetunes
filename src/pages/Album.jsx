@@ -18,14 +18,19 @@ class Album extends Component {
   }
 
   async componentDidMount() {
+    this.setState({
+      loading: true,
+    });
     const { match } = this.props;
-    console.log(match);
     const result = await getMusics(match.params.id);
     this.setState({
-      songs: result,
+      songs: result.slice(1),
       artistName: result[0].artistName,
       collectionName: result[0].collectionName,
-      loading: false,
+    }, () => {
+      this.setState({
+        loading: false,
+      });
     });
   }
 
@@ -44,9 +49,17 @@ class Album extends Component {
                   <p data-testid="album-name">{collectionName}</p>
                 </div>
                 <div>
-                  <ul>
-                    <MusicCard songs={ songs } />
-                  </ul>
+                  {
+                    songs.map((song, index) => (
+                      <MusicCard
+                        key={ index }
+                        trackId={ song.trackId }
+                        trackName={ song.trackName }
+                        previewUrl={ song.previewUrl }
+                        music={ song }
+                      />
+                    ))
+                  }
                 </div>
               </>
             )
