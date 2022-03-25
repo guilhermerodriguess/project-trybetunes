@@ -13,6 +13,17 @@ class MusicCard extends Component {
     };
   }
 
+  componentDidMount() {
+    const { songsFav, trackId } = this.props;
+
+    const isChecked = songsFav.some((song) => song.trackId === trackId);
+    console.log(isChecked);
+    console.log(trackId);
+    this.setState({
+      checked: isChecked,
+    });
+  }
+
   fetchAPI = async (music) => {
     this.setState((prevState) => ({
       loading: true,
@@ -67,6 +78,7 @@ export default MusicCard;
 
 MusicCard.propTypes = {
   music: PropTypes.objectOf(PropTypes.any).isRequired,
+  songsFav: PropTypes.objectOf(PropTypes.any).isRequired,
   trackId: PropTypes.number.isRequired,
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
