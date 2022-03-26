@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 import Loading from '../components/Loading';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { getFavoriteSongs, addSong, removeSong } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   constructor() {
@@ -12,7 +12,7 @@ class Album extends Component {
 
     this.state = {
       songs: [],
-      songsFav: [],
+      fav: [],
       artistName: '',
       collectionName: '',
       loading: false,
@@ -20,6 +20,11 @@ class Album extends Component {
   }
 
   async componentDidMount() {
+    this.showMusics();
+    this.recoveryFav();
+  }
+
+  showMusics = async () => {
     this.setState({
       loading: true,
     });
@@ -34,20 +39,40 @@ class Album extends Component {
         loading: false,
       });
     });
-    this.recoveryFavSongs();
   }
 
-  recoveryFavSongs = async () => {
-    this.setState({ loading: true });
-    const result = await getFavoriteSongs();
+  recoveryFav = async () => {
     this.setState({
-      songsFav: result,
-      loading: false,
+      fav: await getFavoriteSongs(),
     });
   }
 
+  isChecked = (song) => {
+    const { fav } = this.state;
+    const isChecked = (fav.some(({ trackName }) => trackName === song.trackName));
+    return isChecked;
+  }
+
+  handleInput = async ({ target }, song) => {
+    const { fav } = this.state;
+    const { checked } = target;
+    this.setState({ loading: true });
+
+    if (checked) {
+      this.setState({ fav: [...fav, song] });
+      await addSong(song);
+    } else {
+      this.setState({
+        fav: fav.filter((music) => music.trackName !== song.trackName),
+      });
+      await removeSong(song);
+    }
+
+    this.setState({ loading: false });
+  }
+
   render() {
-    const { artistName, collectionName, songs, loading, songsFav } = this.state;
+    const { artistName, collectionName, songs, loading } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -63,14 +88,22 @@ class Album extends Component {
                 <div>
                   {
                     songs.map((song, index) => (
-                      <MusicCard
-                        key={ index }
-                        trackId={ song.trackId }
-                        trackName={ song.trackName }
-                        previewUrl={ song.previewUrl }
-                        music={ song }
-                        songsFav={ songsFav }
-                      />
+                      <div key={ index }>
+                        <MusicCard
+                          song={ song }
+                        />
+                        <label htmlFor="fav">
+                          Favorita
+                          <input
+                            data-testid={ `checkbox-music-${song.trackId}` }
+                            type="checkbox"
+                            name="fav"
+                            id="fav"
+                            onChange={ (event) => this.handleInput(event, song) }
+                            checked={ this.isChecked(song) }
+                          />
+                        </label>
+                      </div>
                     ))
                   }
                 </div>
