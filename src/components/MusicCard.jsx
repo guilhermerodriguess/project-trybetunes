@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
@@ -17,19 +17,26 @@ class MusicCard extends Component {
     const { songsFav, trackId } = this.props;
 
     const isChecked = songsFav.some((song) => song.trackId === trackId);
-    console.log(isChecked);
-    console.log(trackId);
     this.setState({
       checked: isChecked,
     });
   }
 
   fetchAPI = async (music) => {
-    this.setState((prevState) => ({
-      loading: true,
-      checked: !prevState.checked,
-    }));
-    await addSong(music);
+    const { checked } = this.state;
+    if (checked) {
+      this.setState((prevState) => ({
+        loading: true,
+        checked: !prevState.checked,
+      }));
+      await removeSong(music);
+    } else {
+      this.setState((prevState) => ({
+        loading: true,
+        checked: !prevState.checked,
+      }));
+      await addSong(music);
+    }
     this.setState({
       loading: false,
     });
@@ -78,7 +85,7 @@ export default MusicCard;
 
 MusicCard.propTypes = {
   music: PropTypes.objectOf(PropTypes.any).isRequired,
-  songsFav: PropTypes.objectOf(PropTypes.any).isRequired,
+  songsFav: PropTypes.arrayOf(PropTypes.any).isRequired,
   trackId: PropTypes.number.isRequired,
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
