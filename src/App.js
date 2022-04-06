@@ -31,21 +31,21 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/project-trybetunes">
-              {logged ? <Redirect to="/search" /> : <Login isLogged={ this.isLogged } />}
+              {logged ? <Redirect to="/project-trybetunes/search" /> : <Login isLogged={ this.isLogged } />}
             </Route>
-            <Route path="/profile/edit">
+            <Route path="/project-trybetunes/profile/edit">
               <ProfileEdit />
             </Route>
-            <Route path="/profile">
+            <Route path="/project-trybetunes/profile">
               <Profile />
             </Route>
-            <Route path="/favorites">
+            <Route path="/project-trybetunes/favorites">
               <Favorites />
             </Route>
-            <Route path="/search">
+            <Route path="/project-trybetunes/search">
               <Search />
             </Route>
-            <Route path="/album/:id" component={ Album } />
+            <Route path="/project-trybetunes/album/:id" component={ Album } />
             <Route path="*">
               <NotFound />
             </Route>
