@@ -44,7 +44,7 @@ class Profile extends Component {
             ? <Loading />
             : (
               <div>
-                <Link to="/profile/edit">Editar perfil</Link>
+                <Link to="/project-trybetunes/profile/edit">Editar perfil</Link>
                 <p>
                   { name }
                 </p>

@@ -43,9 +43,9 @@ class Header extends Component {
               : <p data-testid="header-user-name">{ userName }</p>
           }
         </div>
-        <Link data-testid="link-to-search" to="/search">Search</Link>
-        <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-        <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+        <Link data-testid="link-to-search" to="/project-trybetunes/search">Search</Link>
+        <Link data-testid="link-to-favorites" to="/project-trybetunes/favorites">Favorites</Link>
+        <Link data-testid="link-to-profile" to="/project-trybetunes/profile">Profile</Link>
       </header>
     );
   }
