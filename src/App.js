@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Login from './pages/Login';
+import Search from './pages/Search';
+import Album from './pages/Album';
+import Favorites from './pages/Favorites';
+import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
+import ProfileEdit from './pages/ProfileEdit';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      logged: false,
+    };
+  }
+
+  isLogged = (param) => {
+    this.setState({
+      logged: param,
+    });
+  }
+
+  render() {
+    const { logged } = this.state;
+    return (
+      <>
+        <p>TrybeTunes</p>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/project-trybetunes">
+              {logged ? <Redirect to="/search" /> : <Login isLogged={ this.isLogged } />}
+            </Route>
+            <Route path="/profile/edit">
+              <ProfileEdit />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+            <Route path="/favorites">
+              <Favorites />
+            </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
+            <Route path="/album/:id" component={ Album } />
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </>
+    );
+  }
 }
 
 export default App;
