@@ -33,16 +33,16 @@ class App extends React.Component {
             <Route exact path="/project-trybetunes">
               {logged ? <Redirect to="/project-trybetunes/search" /> : <Login isLogged={ this.isLogged } />}
             </Route>
-            <Route path="/project-trybetunes/profile/edit">
+            <Route exact path="/project-trybetunes/profile/edit">
               <ProfileEdit />
             </Route>
-            <Route path="/project-trybetunes/profile">
+            <Route exact path="/project-trybetunes/profile">
               <Profile />
             </Route>
-            <Route path="/project-trybetunes/favorites">
+            <Route exact path="/project-trybetunes/favorites">
               <Favorites />
             </Route>
-            <Route path="/project-trybetunes/search">
+            <Route exact path="/project-trybetunes/search">
               <Search />
             </Route>
             <Route path="/project-trybetunes/album/:id" component={ Album } />
