@@ -31,7 +31,7 @@ class ListAlbum extends Component {
                       <br />
                       <Link
                         data-testid={ `link-to-album-${collectionId}` }
-                        to={ `album/${collectionId}` }
+                        to={ `/project-trybetunes/album/${collectionId}` }
                       >
                         More Info
                       </Link>
