@@ -1,38 +1,251 @@
-.App {
+body {
+  font-size: 30px;
+  --bg-color: rgb(242, 242, 242);
+  --bg-div-color: rgba(39, 195, 45, 0.604);
+  --bg-btn-color: rgb(0, 0, 240);
+  --bg-btn-disabled: #dad5d5;
+  --font-color: rgb(0, 0, 0);
+  --font-btn-color: white;
+  --box-shadow-color: #0000008a;
+  --border-radius: 0.3em;
+  --div-shadow: 0 0 0.3em var(--box-shadow-color);
+  --input-border-radius: 0.2em;
+  --btn-box-shadow: 0.1em 0.1em 0.1em var(--box-shadow-color);
+  color: var(--font-color);
+  background-color: var(--bg-color)
+}
+
+.page-login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-login-div {
+  background-color: var(--bg-div-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  text-align: center;
+  padding: 1.6em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--div-shadow)
+}
+
+
+.page-login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-login input {
+  width: 8em;
+  border: none;
+  border-radius: var(--input-border-radius);
+}
+
+input, button {
+  font-size: 1em;
+  text-align: center;
+  transition: 0.3s;
+  border-radius: var(--input-border-radius);
+}
+
+button:disabled {
+  background-color: var(--bg-btn-disabled);
+  transition: 0.3s;
+}
+
+button:active {
+  transform: translate(0.1em, 0.1em);
+  box-shadow: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.2em;
+  color: var(--font-btn-color);
+  background-color: var(--bg-btn-color);
+  box-shadow: var(--btn-box-shadow);
+}
+
+.page-login button {
+  cursor: pointer;
+  margin-top: 0.6em;
+  padding: 0.2em;
+  border: none;
+  border-radius: 0.2em;
+  color: var(--font-btn-color);
+  background-color: var(--bg-btn-color);
+  box-shadow: var(--btn-box-shadow);
+}
+
+header {
+  background-color: var(--bg-div-color);
+  font-size: 0.5em;
+}
+
+.header-logo-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0em 0.5em;
+}
+
+.header-links {
+  padding: 0.3em 0em;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #5b5a5a5b;
+}
+
+.header-links a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.page-search {
+  height: 100vh;
+}
+
+.page-search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-search form {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.page-search-form button {
+  margin-left: 0.6em;
+}
+
+.page-search-result-title {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page-search-result {
+  font-size: 0.5em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ul {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+li {
+  border: 1px black solid;
+  list-style: none;
+  margin-bottom: 1em;
+  text-align: center;
+  background-color: var(--bg-div-color);
+  padding-bottom: 1em;
+}
+
+.page-search-album {
+  width: 13em;
+  height: 18em;
+}
+
+.artist-name {
+  margin: 0;
+  font-weight:bolder;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.album-name {
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+li img {
+  width: 13em;
+}
+
+.page-search-more-info {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 24px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .page-login-div {
+    font-size: 1em;
+    padding: 0.6em;
+    min-width: 260px;
+  }
+
+  input, button {
+    font-size: 1em;
+  }
+
+  .header {
+    min-width: 320px;
+  }
+
+  .header-logo-name, .header-links a {
+    font-size: 1em;
+  }
+
+  .page-search form {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .page-search-form button {
+    margin-top: 1em;
+  }
+
+  .page-search input {
+    width: 12em;
+  }
+
+  .page-search-result-title {
+    font-size: 1em;
+  }
+
+  .page-search-album {
+    width: 12em;
+    height: 18em;
+    font-size: 1em;
+  }
+
+  ul{
+    padding: 0;
+  }
+
+  li {
+    padding-bottom: 0.2em;
+  }
+
+  li button {
+    margin: 0;
+  }
+
+  .page-search-album img {
+    width: 12em;
   }
 }

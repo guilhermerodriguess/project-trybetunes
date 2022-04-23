@@ -4,9 +4,9 @@ import Loading from './Loading';
 import { getUser } from '../services/userAPI';
 
 class Header extends Component {
-  constructor() {
+  constructor() {;
     super();
-
+    
     this.state = {
       userName: '',
       loading: false,
@@ -35,17 +35,25 @@ class Header extends Component {
   render() {
     const { userName, loading } = this.state;
     return (
-      <header data-testid="header-component">
-        <div>
+      <header className='header-component' data-testid="header-component">
+        <div className='header-logo-name'>
+          <h1>TrybeTunes</h1>
           {
             loading
               ? <Loading />
-              : <p data-testid="header-user-name">{ userName }</p>
+              : <h3 data-testid="header-user-name">{ userName }</h3>
           }
         </div>
-        <Link data-testid="link-to-search" to="/project-trybetunes/search">Search</Link>
-        <Link data-testid="link-to-favorites" to="/project-trybetunes/favorites">Favorites</Link>
-        <Link data-testid="link-to-profile" to="/project-trybetunes/profile">Profile</Link>
+        <div className='header-links'>
+          <Link data-testid="link-to-search" to="/project-trybetunes/search"><h3>
+            Search</h3></Link>
+          <Link data-testid="link-to-favorites" to="/project-trybetunes/favorites"><h3>
+          Favorites </h3></Link>
+          <Link data-testid="link-to-profile" to="/project-trybetunes/profile">
+            <h3>
+            Profile
+              </h3></Link>
+        </div>
       </header>
     );
   }

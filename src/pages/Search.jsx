@@ -54,13 +54,13 @@ class Search extends Component {
   render() {
     const { disabled, input, loading, result, showArtistName, name } = this.state;
     return (
-      <div data-testid="page-search">
+      <div className='page-search' data-testid="page-search">
         <Header />
+        <div className='page-search-form'>
         {
           loading
             ? <Loading />
             : (
-              <div>
                 <form>
                   <label htmlFor="search-artist-input">
                     <input
@@ -73,23 +73,23 @@ class Search extends Component {
                     />
                   </label>
                   <label htmlFor="search-artist-button">
-                    <input
+                    <button
                       type="button"
                       data-testid="search-artist-button"
                       id="search-artist-button"
-                      value="Pesquisar"
                       disabled={ disabled }
                       onClick={ this.artistSearch }
-                    />
+                    >Pesquisar
+                    </button>
                   </label>
                 </form>
-              </div>
             )
-        }
+          }
+          </div>
         {
           showArtistName
             ? (
-              <p>
+              <p className='page-search-result-title'>
                 {`Resultado de álbuns de: ${name}`}
               </p>
             )
@@ -99,7 +99,7 @@ class Search extends Component {
           result === null
             ? null
             : (
-              <div>
+              <div className='page-search-result'>
                 <ListAlbum result={ result } />
               </div>
             )

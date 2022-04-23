@@ -7,6 +7,7 @@ import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import ProfileEdit from './pages/ProfileEdit';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -27,7 +28,6 @@ class App extends React.Component {
     const { logged } = this.state;
     return (
       <>
-        <p>TrybeTunes</p>
         <BrowserRouter>
           <Switch>
             <Route exact path="/project-trybetunes">

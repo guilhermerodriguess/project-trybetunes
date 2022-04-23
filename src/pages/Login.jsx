@@ -62,7 +62,9 @@ class Login extends Component {
   render() {
     const { sendButton, loading } = this.state;
     return (
-      <div data-testid="page-login">
+      <div className='page-login' data-testid="page-login">
+        <div className='page-login-div' >
+        <h1>TrybeTunes</h1>
         {loading
           ? <Loading />
           : (
@@ -77,16 +79,18 @@ class Login extends Component {
                 />
               </label>
               <label htmlFor="login-submit-button">
-                <input
+                <button
                   id="login-submit-button"
-                  type="button"
-                  value="Entrar"
+                  type="submit"
                   data-testid="login-submit-button"
                   disabled={ sendButton }
                   onClick={ this.userFetch }
-                />
+                >
+                  Entrar
+                </button>
               </label>
             </form>)}
+        </div>
       </div>
     );
   }

@@ -23,18 +23,26 @@ class ListAlbum extends Component {
                     collectionId },
                   index) => (
                     <li key={ index }>
-                      <img src={ artworkUrl100 } alt={ collectionName } />
-                      <br />
-                      {`Artista: ${artistName}`}
-                      <br />
-                      {`Album: ${collectionName}`}
-                      <br />
-                      <Link
-                        data-testid={ `link-to-album-${collectionId}` }
-                        to={ `/project-trybetunes/album/${collectionId}` }
-                      >
-                        More Info
-                      </Link>
+                      <div className='page-search-album'>
+                        <img src={ artworkUrl100 } alt={ collectionName } />
+                        <br />
+                        <p className='artist-name'>
+                          {artistName}
+                        </p>
+                        <br />
+                        <p className='album-name' >
+                          {collectionName}
+                        </p>
+                        <br />
+                      </div>
+                      <div className='page-search-more-info'>
+                        <Link
+                          data-testid={ `link-to-album-${collectionId}` }
+                          to={ `/project-trybetunes/album/${collectionId}` }
+                          >
+                          <button>More Info</button>
+                        </Link>
+                      </div>
                     </li>
                   ))
                 }
