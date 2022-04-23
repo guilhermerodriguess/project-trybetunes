@@ -61,7 +61,7 @@ class Search extends Component {
           loading
             ? <Loading />
             : (
-                <form>
+                <form  onSubmit={this.artistSearch}>
                   <label htmlFor="search-artist-input">
                     <input
                       type="text"
@@ -74,11 +74,11 @@ class Search extends Component {
                   </label>
                   <label htmlFor="search-artist-button">
                     <button
-                      type="button"
+                      type="submit"
                       data-testid="search-artist-button"
                       id="search-artist-button"
                       disabled={ disabled }
-                      onClick={ this.artistSearch }
+                      // onClick={ this.artistSearch }
                     >Pesquisar
                     </button>
                   </label>
