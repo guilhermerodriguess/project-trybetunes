@@ -15,43 +15,19 @@ body {
   background-color: var(--bg-color)
 }
 
-.page-login {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.page-login-div {
-  background-color: var(--bg-div-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1em;
-  text-align: center;
-  padding: 1.6em;
-  border-radius: var(--border-radius);
-  box-shadow: var(--div-shadow)
-}
-
-
-.page-login form {
-  display: flex;
-  flex-direction: column;
-}
-
-.page-login input {
-  width: 8em;
-  border: none;
-  border-radius: var(--input-border-radius);
-}
-
 input, button {
   font-size: 1em;
   text-align: center;
   transition: 0.3s;
   border-radius: var(--input-border-radius);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  color: var(--font-btn-color);
+  background-color: var(--bg-btn-color);
+  box-shadow: var(--btn-box-shadow);
 }
 
 button:disabled {
@@ -64,25 +40,7 @@ button:active {
   box-shadow: none;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 0.2em;
-  color: var(--font-btn-color);
-  background-color: var(--bg-btn-color);
-  box-shadow: var(--btn-box-shadow);
-}
-
-.page-login button {
-  cursor: pointer;
-  margin-top: 0.6em;
-  padding: 0.2em;
-  border: none;
-  border-radius: 0.2em;
-  color: var(--font-btn-color);
-  background-color: var(--bg-btn-color);
-  box-shadow: var(--btn-box-shadow);
-}
+/* Header */
 
 header {
   background-color: var(--bg-div-color);
@@ -112,6 +70,46 @@ header {
 .header-links a:hover {
   color: var(--font-btn-color);
 }
+
+/* Login */
+
+.page-login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-login-div {
+  background-color: var(--bg-div-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  text-align: center;
+  padding: 1.6em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--div-shadow)
+}
+
+.page-login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-login input {
+  width: 8em;
+  border: none;
+}
+
+.page-login button {
+  cursor: pointer;
+  margin-top: 0.6em;
+  padding: 0.2em;
+}
+
+/* Search */
 
 .page-search {
   height: 100vh;
@@ -179,7 +177,6 @@ li {
 }
 
 .album-name {
-  margin: 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -195,21 +192,63 @@ li img {
   align-items: center;
 }
 
+/* More Info */
+
+.page-album {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.page-album h3 {
+  margin: 0.5em 0;
+}
+
+.album-name {
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
+.page-album img {
+  width: 10em;
+}
+
+.page-album-artist {
+  width: 16em;
+  text-align: center;
+  margin: 0 1em 0 0;
+}
+
+.music-card {
+  border-top: 1px solid #5b5a5a5b;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  font-size: 0.5em;
+}
+
+.music-card p {
+  width: 10em;
+  text-align: left;
+}
+
+.track {
+  display: flex;
+  justify-content: space-evenly;
+}
 
 @media screen and (max-width: 768px) {
   body {
     font-size: 24px;
   }
 
-  .page-login-div {
-    font-size: 1em;
-    padding: 0.6em;
-    min-width: 260px;
-  }
-
   input, button {
     font-size: 1em;
   }
+
+  /* Header */
 
   .header {
     min-width: 320px;
@@ -218,6 +257,16 @@ li img {
   .header-logo-name, .header-links a {
     font-size: 1em;
   }
+
+  /* Login */
+
+  .page-login-div {
+    font-size: 1em;
+    padding: 0.6em;
+    min-width: 260px;
+  }
+
+  /* Search */
 
   .page-search form {
     padding: 1em;
@@ -235,19 +284,9 @@ li img {
     width: 12em;
   }
 
-  .page-search-result-title {
-    font-size: 1em;
-  }
-
   .page-search-album {
     width: 12em;
     height: 16em;
-    font-size: 1em;
-  }
-
-  ul{
-    margin: 0;
-    padding: 0;
   }
 
   li {
@@ -255,11 +294,39 @@ li img {
     margin: 1em;
   }
 
-  li button {
-    margin: 0;
-  }
-
   .page-search-album img {
     width: 12em;
+  }
+
+  /* More Info */
+
+  .page-album {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .page-album img {
+    width: 6em;
+  }
+
+  .page-album-artist {
+    width: 100%;
+  }
+
+  .music-card p {
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+    font-size: 1.5em;
+    margin: 0.5em 0 0 0 ;
+  }
+
+  .music-card {
+    flex-direction: column;
+  }
+
+  .track {
+    flex-direction: column;
   }
 }

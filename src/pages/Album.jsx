@@ -16,6 +16,7 @@ class Album extends Component {
       artistName: '',
       collectionName: '',
       loading: false,
+      image: '',
     };
   }
 
@@ -30,10 +31,12 @@ class Album extends Component {
     });
     const { match } = this.props;
     const result = await getMusics(match.params.id);
+    console.log(result);
     this.setState({
       songs: result.slice(1),
       artistName: result[0].artistName,
       collectionName: result[0].collectionName,
+      image: result[0].artworkUrl100,
     }, () => {
       this.setState({
         loading: false,
@@ -72,7 +75,7 @@ class Album extends Component {
   }
 
   render() {
-    const { artistName, collectionName, songs, loading } = this.state;
+    const { artistName, collectionName, songs, loading, image } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -80,15 +83,17 @@ class Album extends Component {
           loading
             ? <Loading />
             : (
-              <>
-                <div>
-                  <p data-testid="artist-name">{artistName}</p>
-                  <p data-testid="album-name">{collectionName}</p>
+              <div className='page-album'>
+                <div className='page-album-artist' >
+                  <img src={image} alt={artistName} />
+                  <h3 data-testid="artist-name">{artistName}</h3>
+                  <h3 className='album-name' data-testid="album-name">{collectionName}</h3>
                 </div>
                 <div>
                   {
                     songs.map((song, index) => (
-                      <div key={ index }>
+                      <div className='music-card' key={ index }>
+                        <hr />
                         <MusicCard
                           song={ song }
                         />
@@ -107,7 +112,7 @@ class Album extends Component {
                     ))
                   }
                 </div>
-              </>
+              </div>
             )
         }
       </div>

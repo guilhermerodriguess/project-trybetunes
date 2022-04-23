@@ -6,7 +6,7 @@ class MusicCard extends Component {
     const { song } = this.props;
     const { previewUrl, trackName } = song;
     return (
-      <div>
+      <div className='track' >
         <p>{trackName}</p>
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
