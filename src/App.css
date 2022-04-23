@@ -239,13 +239,39 @@ li img {
   justify-content: space-evenly;
 }
 
+
+#fav {
+  display: none;
+}
+
+#fav:checked + label > svg {
+  animation: preencher;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes preencher {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: #ff0000
+  }
+}
+
+/* input[type=checkbox] + label {
+  display:inline-block;
+  height:20px;
+  padding:0 0 0 25px;
+  margin:0 10px 0 0;
+  background-image:url('./Icons/coração20.webp');
+  background-repeat:no-repeat;
+  background-position:0 0;
+} */
+
 @media screen and (max-width: 768px) {
   body {
     font-size: 24px;
-  }
-
-  input, button {
-    font-size: 1em;
   }
 
   /* Header */
@@ -268,34 +294,34 @@ li img {
 
   /* Search */
 
+  li {
+    font-size: 1.5em;
+    padding-bottom: 0em;
+  }
+
   .page-search form {
-    padding: 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .page-search-form button {
-    margin-top: 1em;
+    padding: 1em;
   }
 
   .page-search input {
-    width: 12em;
+    width: 100%;
   }
 
-  .page-search-album {
-    width: 12em;
-    height: 16em;
+  .page-search button {
+    margin: 2em 0 ;
   }
 
-  li {
-    padding-bottom: 1em;
-    margin: 1em;
+  .artist-name {
+    font-size: 1.5em;
+    margin: 0.5em;
   }
 
-  .page-search-album img {
-    width: 12em;
+  .album-name {
+    font-size: 1em;
   }
 
   /* More Info */
@@ -312,10 +338,22 @@ li img {
 
   .page-album-artist {
     width: 100%;
+    margin: 0;
+    font-size: 1.5em;
   }
 
+  .page-album-artist h1 {
+    font-size: 0.8em;
+  }
+
+  .page-album-artist h3 {
+    white-space: normal;
+    font-size: 0.5em;
+  }
+
+  .page-album
+
   .music-card p {
-    white-space: nowrap;
     text-align: center;
     width: 100%;
     font-size: 1.5em;

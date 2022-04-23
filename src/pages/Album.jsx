@@ -31,7 +31,6 @@ class Album extends Component {
     });
     const { match } = this.props;
     const result = await getMusics(match.params.id);
-    console.log(result);
     this.setState({
       songs: result.slice(1),
       artistName: result[0].artistName,
@@ -86,7 +85,7 @@ class Album extends Component {
               <div className='page-album'>
                 <div className='page-album-artist' >
                   <img src={image} alt={artistName} />
-                  <h3 data-testid="artist-name">{artistName}</h3>
+                  <h1 data-testid="artist-name">{artistName}</h1>
                   <h3 className='album-name' data-testid="album-name">{collectionName}</h3>
                 </div>
                 <div>
@@ -97,8 +96,7 @@ class Album extends Component {
                         <MusicCard
                           song={ song }
                         />
-                        <label htmlFor="fav">
-                          Favorita
+                        
                           <input
                             data-testid={ `checkbox-music-${song.trackId}` }
                             type="checkbox"
@@ -107,7 +105,11 @@ class Album extends Component {
                             onChange={ (event) => this.handleInput(event, song) }
                             checked={ this.isChecked(song) }
                           />
-                        </label>
+                          <label htmlFor="fav">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                          </label>
                       </div>
                     ))
                   }

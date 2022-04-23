@@ -62,7 +62,6 @@ class Search extends Component {
             ? <Loading />
             : (
                 <form  onSubmit={this.artistSearch}>
-                  <label htmlFor="search-artist-input">
                     <input
                       type="text"
                       data-testid="search-artist-input"
@@ -71,8 +70,6 @@ class Search extends Component {
                       onChange={ this.listenInput }
                       value={ input }
                     />
-                  </label>
-                  <label htmlFor="search-artist-button">
                     <button
                       type="submit"
                       data-testid="search-artist-button"
@@ -81,7 +78,6 @@ class Search extends Component {
                       // onClick={ this.artistSearch }
                     >Pesquisar
                     </button>
-                  </label>
                 </form>
             )
           }

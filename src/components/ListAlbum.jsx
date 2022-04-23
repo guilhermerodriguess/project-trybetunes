@@ -25,15 +25,12 @@ class ListAlbum extends Component {
                     <li key={ index }>
                       <div className='page-search-album'>
                         <img src={ artworkUrl100 } alt={ collectionName } />
-                        <br />
                         <p className='artist-name'>
                           {artistName}
                         </p>
-                        <br />
                         <p className='album-name' >
                           {collectionName}
                         </p>
-                        <br />
                       </div>
                       <div className='page-search-more-info'>
                         <Link
