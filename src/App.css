@@ -240,14 +240,19 @@ li img {
 }
 
 
-#fav {
+input[type=checkbox] {
   display: none;
 }
 
-#fav:checked + label > svg {
+input[type=checkbox] + label {
+  cursor: pointer;
+}
+
+input[type=checkbox]:checked + label > svg {
   animation: preencher;
   animation-duration: .5s;
   animation-fill-mode: forwards;
+
 }
 
 @keyframes preencher {
@@ -258,16 +263,6 @@ li img {
     fill: #ff0000
   }
 }
-
-/* input[type=checkbox] + label {
-  display:inline-block;
-  height:20px;
-  padding:0 0 0 25px;
-  margin:0 10px 0 0;
-  background-image:url('./Icons/coração20.webp');
-  background-repeat:no-repeat;
-  background-position:0 0;
-} */
 
 @media screen and (max-width: 768px) {
   body {
