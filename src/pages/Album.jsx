@@ -58,7 +58,6 @@ class Album extends Component {
   handleInput = async ({ target }, song) => {
     const { fav } = this.state;
     const { checked } = target;
-    this.setState({ loading: true });
 
     if (checked) {
       this.setState({ fav: [...fav, song] });
@@ -69,8 +68,6 @@ class Album extends Component {
       });
       await removeSong(song);
     }
-
-    this.setState({ loading: false });
   }
 
   render() {
@@ -85,8 +82,8 @@ class Album extends Component {
               <div className='page-album'>
                 <div className='page-album-artist' >
                   <img src={image} alt={artistName} />
-                  <h1 data-testid="artist-name">{artistName}</h1>
-                  <h3 className='album-name' data-testid="album-name">{collectionName}</h3>
+                  <h1 className='page-album-artist-name' data-testid="artist-name">{artistName}</h1>
+                  <h3 className='page-album-album-name' data-testid="album-name">{collectionName}</h3>
                 </div>
                 <div>
                   {

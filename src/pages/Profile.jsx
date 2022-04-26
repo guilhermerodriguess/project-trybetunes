@@ -43,8 +43,13 @@ class Profile extends Component {
           loading
             ? <Loading />
             : (
-              <div>
+              <div className='page-profile' >
                 <Link to="/project-trybetunes/profile/edit">Editar perfil</Link>
+                <img
+                  src={ image }
+                  alt={ `Foto de ${name}` }
+                  data-testid="profile-image"
+                />
                 <p>
                   { name }
                 </p>
@@ -54,11 +59,6 @@ class Profile extends Component {
                 <p>
                   { description }
                 </p>
-                <img
-                  src={ image }
-                  alt={ `Foto de ${name}` }
-                  data-testid="profile-image"
-                />
               </div>
             )
         }

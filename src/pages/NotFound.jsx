@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import Header from '../components/Header';
 
 class NotFound extends Component {
   render() {
     return (
-      <div data-testid="page-not-found">
-        NotFound
-      </div>
+      <>
+        <Header/>
+        <div  className='page-not-found' data-testid="page-not-found">
+          <h1>
+            Página não encontrada
+          </h1>
+        </div>
+      </>
     );
   }
 }

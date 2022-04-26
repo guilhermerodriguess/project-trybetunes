@@ -40,6 +40,12 @@ button:active {
   box-shadow: none;
 }
 
+/* Loading */
+
+.loading {
+  text-align: center;
+}
+
 /* Header */
 
 header {
@@ -169,6 +175,7 @@ li {
 }
 
 .artist-name {
+  font-size: 1.2em;
   margin: 0;
   font-weight:bolder;
   text-overflow: ellipsis;
@@ -202,10 +209,14 @@ li img {
 }
 
 .page-album h3 {
-  margin: 0.5em 0;
+  margin: 0.5em;
 }
 
-.album-name {
+.page-album-artist-name {
+  font-size: 1em;
+}
+
+.page-album-album-name {
   font-size: 0.6em;
   font-weight: normal;
 }
@@ -215,7 +226,7 @@ li img {
 }
 
 .page-album-artist {
-  width: 16em;
+  width: 14em;
   text-align: center;
   margin: 0 1em 0 0;
 }
@@ -225,7 +236,6 @@ li img {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  text-align: center;
   font-size: 0.5em;
 }
 
@@ -238,7 +248,6 @@ li img {
   display: flex;
   justify-content: space-evenly;
 }
-
 
 input[type=checkbox] {
   display: none;
@@ -253,6 +262,99 @@ input[type=checkbox]:checked + label > svg {
   animation-duration: .5s;
   animation-fill-mode: forwards;
 
+}
+
+/* Favorites */ 
+
+.page-favorites {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-favorites-track {
+  border-bottom: 1px solid #5b5a5a5b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-favorites-track p {
+  width: 10em;
+  text-align: left;
+  font-size: 0.5em;
+}
+
+/* Profile */
+
+.page-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NotFound */
+
+.page-not-found {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-not-found h1 {
+  font-size: 1em;
+}
+
+/* Profile Edit */
+
+.page-profile-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-profile-edit-btn-save {
+  font-size: .8em;
+}
+
+.page-profile-edit-inputs {
+  margin: 1em 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5em;
+  background-color: var(--bg-div-color);
+}
+
+.page-profile-edit-inputs input, textarea {
+  margin-bottom: 1em;
+  font-size: 1em;
+  max-width: 13em;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.page-profile-edit-image {
+  text-align: center;
+  font-size: .8em;
+  width: 7em;
+  height: 1em;
+  padding: 0.5em;
+  background-color: var(--bg-btn-color);
+  box-shadow: var(--btn-box-shadow); 
+}
+
+.page-profile-edit-image:active {
+  transform: translate(0.1em, 0.1em);
+  box-shadow: none;
 }
 
 @keyframes preencher {
@@ -299,24 +401,24 @@ input[type=checkbox]:checked + label > svg {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1em;
+    padding: 1em 0 0 0 ;
   }
 
   .page-search input {
-    width: 100%;
+    width: 90%;
   }
 
   .page-search button {
-    margin: 2em 0 ;
+    margin: 1em 0 ;
   }
 
   .artist-name {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin: 0.5em;
   }
 
-  .album-name {
-    font-size: 1em;
+  .page-search-more-info button {
+    margin: 1em;
   }
 
   /* More Info */
@@ -346,8 +448,6 @@ input[type=checkbox]:checked + label > svg {
     font-size: 0.5em;
   }
 
-  .page-album
-
   .music-card p {
     text-align: center;
     width: 100%;
@@ -361,5 +461,21 @@ input[type=checkbox]:checked + label > svg {
 
   .track {
     flex-direction: column;
+  }
+
+  /* Favorites */ 
+
+  .page-favorites-track {
+    flex-direction: column;
+  }
+
+  .page-favorites-track p {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+  }
+
+  .page-profile-edit {
+    font-size: 1.5em;
   }
 }
