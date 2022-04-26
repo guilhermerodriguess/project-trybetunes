@@ -199,6 +199,11 @@ li img {
   align-items: center;
 }
 
+.album-not-found {
+  font-size: 2em;
+  text-align: center;
+}
+
 /* More Info */
 
 .page-album {
@@ -295,6 +300,23 @@ input[type=checkbox]:checked + label > svg {
   align-items: center;
 }
 
+.page-profile-card {
+  background-color: var(--bg-div-color);
+  width: 12em;
+  text-align: center;
+  box-shadow: var(--div-shadow);
+}
+
+.page-profile-btn {
+  margin: 1em;
+}
+
+.page-profile-card img {
+  width: 100%;
+}
+
+
+
 /* NotFound */
 
 .page-not-found {
@@ -338,23 +360,11 @@ input[type=checkbox]:checked + label > svg {
   max-width: 13em;
 }
 
-input[type=file] {
-  display: none;
-}
-
-.page-profile-edit-image {
-  text-align: center;
-  font-size: .8em;
-  width: 7em;
-  height: 1em;
-  padding: 0.5em;
-  background-color: var(--bg-btn-color);
-  box-shadow: var(--btn-box-shadow); 
-}
-
-.page-profile-edit-image:active {
-  transform: translate(0.1em, 0.1em);
-  box-shadow: none;
+.page-profile-edit form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes preencher {

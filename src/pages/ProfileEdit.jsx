@@ -21,7 +21,7 @@ class ProfileEdit extends Component {
   }
 
   saveProfile = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const estado = JSON.stringify(this.state)
     localStorage.setItem('user', estado)
   }
@@ -41,8 +41,8 @@ class ProfileEdit extends Component {
                 <input onChange={ (e) => this.handleInputs(e) } type="email" id='email' placeholder='Edite seu email' />
                 <label htmlFor="description">Descrição</label>
                 <textarea onChange={ (e) => this.handleInputs(e) } row id='description' placeholder='Escreva uma breve descrição sobre você'/>
-                <label className='page-profile-edit-image'  htmlFor="image">Enviar Imagem</label>
-                <input onChange={ (e) => this.handleInputs(e) } type="file" id="image" />
+                <label className='page-profile-edit-image'  htmlFor="image">Imagem</label>
+                <input onChange={ (e) => this.handleInputs(e) } type='text' id="image" placeholder='Insira o URL de uma imagem'/>
               </div>
               <button className='page-profile-edit-btn-save' type='submit'>Salvar</button>
             </form>

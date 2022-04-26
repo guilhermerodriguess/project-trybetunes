@@ -10,7 +10,7 @@ class ListAlbum extends Component {
         {
           result.length === 0
             ? (
-              <p>
+              <p className='album-not-found' >
                 Nenhum álbum foi encontrado
               </p>
             )

@@ -44,21 +44,27 @@ class Profile extends Component {
             ? <Loading />
             : (
               <div className='page-profile' >
-                <Link to="/project-trybetunes/profile/edit">Editar perfil</Link>
-                <img
-                  src={ image }
-                  alt={ `Foto de ${name}` }
-                  data-testid="profile-image"
-                />
-                <p>
-                  { name }
-                </p>
-                <p>
-                  { email }
-                </p>
-                <p>
-                  { description }
-                </p>
+                  <Link to="/project-trybetunes/profile/edit">
+                    <button className='page-profile-btn'>
+                      Editar Perfil
+                    </button>
+                  </Link>
+                <div className='page-profile-card'>
+                  <img
+                    src={ image }
+                    alt={ `Foto de ${name}` }
+                    data-testid="profile-image"
+                  />
+                  <p>
+                    { name }
+                  </p>
+                  <p>
+                    { email }
+                  </p>
+                  <p>
+                    { description }
+                  </p>
+                </div>
               </div>
             )
         }
